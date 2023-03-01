@@ -5,43 +5,31 @@ using namespace std;
 int main()
 {
     int num = 0;
-    int height = 0;
-    int tower = 0;
     int cnt = 0;
-    stack <int> s;
-    stack <int> temp;
-    stack <int> result;
-    
+    int height = 0;
+    stack <int> tower;
+    stack <int> index;
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+
     cin >> num;
-    for (int i = 0; i < num; i++)
+
+    for (int i = 1; i <= num; i++)
     {
         cin >> height;
-        s.push(height);
-    }
 
-    for (int i = 0; i < num; i++)
-    {
-        cnt = 0;
-        tower = s.top();
-        s.pop();
-        for (int j = 0; j < s.size(); j++)
+        while (!tower.empty() && height > tower.top())
         {
-            temp.push(s.top());
-            if (tower < s.top())
-                cnt++;
-            s.pop();
+            tower.pop();
+            index.pop();
         }
-        for (int j = 0; j < temp.size(); j++)
-        {
-            s.push(temp.top());
-            temp.pop();
-        }
-        result.push(cnt);
-    }
-    for (int i = 0; i < result.size(); i++)
-    {
-        cout << result.top() << " ";
-        result.pop();
+
+        if (tower.size() == 0)
+            cout << 0 << " ";
+        else
+            cout << index.top() << " ";
+        tower.push(height);
+        index.push(i);
     }
 
     return 0;
