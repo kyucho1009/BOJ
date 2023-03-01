@@ -16,7 +16,7 @@ int main()
     {
         l.clear();
         cin >> str;
-        cursor = l.begin();
+        cursor = l.begin(); //iterator 초기화 추가로 런타임 에러 해결
         for (auto c : str)
         {
             if (c == '<')
