@@ -1,30 +1,31 @@
 #include <iostream>
-#include <string>
+#include <stack>
 using namespace std;
 
 int main()
 {
-    int max = 0;
-    int arr[9] = {0};
-    string str;
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    int num;
+    int height;
+    long long sum;
+    stack <int> s;
 
-    cin >> str;
-    for (auto c : str)
+    sum = 0;
+    cin >> num;
+    for(int i = 0; i < num; i++)
     {
-        if (c == '9')
-            arr[6]++;
+        cin >> height;
+        if (i == 0)
+            s.push(height);
         else
-            arr[c - '0']++;
+        {
+            while (s.size() != 0 && s.top() <= height)
+                s.pop();
+            sum += s.size();
+            s.push(height);
+        }
     }
-    if (arr[6] % 2 == 0)
-        arr[6] /= 2;
-    else
-        arr[6] = arr[6] / 2 + 1;
-    for (auto i : arr)
-    {
-        if (max < i)
-            max = i;
-    }
-    cout << max;
-    return 0;
+    cout << sum;
 }
