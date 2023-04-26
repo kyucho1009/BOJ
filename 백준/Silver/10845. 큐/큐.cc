@@ -3,8 +3,8 @@
 using namespace std;
 
 int main() {
-    queue<int> q;
     int T;
+    queue<int> q;
     cin >> T;
     while(T--) {
         string s;
