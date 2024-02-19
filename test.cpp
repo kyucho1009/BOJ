@@ -3,20 +3,21 @@ using namespace std;
 
 int main()
 {
-    int row;
-    int col;
-    int inven;
-    int height;
-    int map[500][500];
+    int n1;
+    int n2;
+    int n3;
+    int n4;
+    int n5;
+    int n6;
+    int num;
+    int test_case;
 
-    cin >> row >> col >> inven;
-    for (int i = 0; i < row; i++)
+    cin >> test_case;
+    for (int i = 0; i < test_case; i++)
     {
-        for (int j = 0; j < col; j++)
-        {
-            cin >> height;
-            map[i][j] = height;
-        }
+        cin >> num;
+        n1 = num / 100000;
+        n2 = num
     }
-    /*=================complete=================*/
+    return 0;
 }
