@@ -81,7 +81,7 @@ int main(void)
     }
     cout << num;
     */
-    for (int i = 1; i < 101; i++)
+    for (int i = 0; i < 101; i++)
         V.push_back(bfs(i));
     cout << *max_element(V.begin(), V.end());
     return 0;
