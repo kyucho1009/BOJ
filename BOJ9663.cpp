@@ -1,41 +1,62 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int N;
-int cnt;
-bool isused1[14];
-bool isused2[27];
-bool isused3[27];
-bool board[14][14];
+int N;            // 입력, 체스판의 크기
+int cnt;          // 출력, 가능한 경우의 수
+bool isused1[14]; // 같은 열에 퀸이 있는지 검사
+bool isused2[27]; // 오른쪽 위 방향 대각선에 퀸이 있는지 검사(2N -1개 만큼의 대각선이 만들어짐)
+bool isused3[27]; // 오른쪽 아래 방향 대각선에 퀸이 있는지 검사(2N -1개 만큼의 대각선이 만들어짐)
 
 void func(int num)
 {
     if (num == N)
-        cnt++;
+        cnt++; // 배치 수 세기기
     for (int i = 0; i < N; i++)
     {
-        if (!isused1[i] && !isused2[num + i] && !isused3[num - i + N - 1])
+        if (!isused1[i] && !isused2[num + i] && !isused3[num - i + N - 1]) // 열, 오른쪽 위 대각선, 오른쪽 아래 대각선 검사
         {
-            board[num][i] = 1;
-            isused1[i] = 1;
-            isused2[num + i] = 1;
-            isused3[num - i + N - 1] = 1;
-            func(num + 1);
-            board[num][i] = 0;
-            isused1[i] = 0;
-            isused2[num + i] = 0;
-            isused3[num - i + N - 1] = 0;
+            isused1[i] = 1;               // "i"열 퀸 있음 표시
+            isused2[num + i] = 1;         // 오른쪽 위 대각선 방향 퀸 있음 표시
+            isused3[num - i + N - 1] = 1; // 오른쪽 아래 대각선 방향 퀸 있음 표시
+            func(num + 1);                // 다음 행으로 넘어가기
+            isused1[i] = 0;               // "i"열 퀸 있음 해제
+            isused2[num + i] = 0;         // 오른쪽 위 대각선 방향 퀸 있음 해제
+            isused3[num - i + N - 1] = 0; // 오른쪽 아래 대각선 방향 퀸 있음 해제
         }
     }
+    return;
 }
 
 int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
-    cin >> N;
-    func(0);
-    cout << cnt;
+    cin >> N;    // 입력
+    func(0);     // func(행 번호)
+    cout << cnt; // 출력
     return 0;
 }
 // 1 + (N - 1) * 2 = 2N - 1
+/*
+- 문제
+    퀸들이 서로 공격하지 못하는 배치 수를 구해야한다
+
+- 문제 해결 방안:
+    ** 체스 규칙 상에서 퀸의 움직임은 알고있다고 가정하고 설명하겠다 **
+    처음 이 문제를 접근할때 우리는 당연히 각 행에 퀸을 하나씩 들어간다고 생각한다
+    왜냐하면 같은 행에 퀸이 2개 이상 있다면 이미 문제 조건에 부합하지 않기 때문이다
+
+    한 행에 퀸이 한개라는 것을 인지했다면 다음으로 퀸을 놓을 때 우리가 주의해야할 점은 같은 열 그리고 두방향의 대각선에 다른 퀸이 있는가이다
+    그렇기에 "isused"라는 열을 숫자를 붙여 배열 3개를 만들어 퀸을 배치 할 수 있는지 검사한다
+    "isused1"은 같은 열에 퀸이 있는가
+    "isused2"은 오른쪽 위 방향 대각선으로 퀸이 있는가
+    "isused3"은 오른쪽 아래 방향 대각선으로 퀸이 있는가를 검사하는것이다
+    위 3가지 검사를 모두 통과하면 퀸을 배치하고 다음 행, 통과못하면 퀸 재배치, 놓을 자리가 없으면 다시 돌아가서 이전 퀸 재배치
+
+
+    Q.  퀸을 배치하는 체스판은 어디있나요?
+    A.  퀸을 배치하는 체스판은 필요없다
+        처음에는 퀸을 배치하는 체스판인 board[N][N]을 만들었지만 생각해보니 굳이 필요없다
+        isused1,2,3 배열을 가지고 있으면 board가 없어도 퀸의 위치를 다 알 수 있어 board를 만들어 직접 배치할 이유가 없다
+        그러니까 마음속으로 있다고 생각하고 해보자
+*/
