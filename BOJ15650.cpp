@@ -46,8 +46,6 @@ int main()
     ios::sync_with_stdio(0);
     cin.tie(0);
     cin >> N >> M;
-    for (int i = 0; i < 10; i++)
-        arr[i] = 10;
     func(0);
     return 0;
 }
