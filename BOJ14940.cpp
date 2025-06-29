@@ -27,6 +27,7 @@ int main()
             board[i][j] += -2; // 보드 재구성 (2 -> 0, 1 -> -1, 0 -> -2) 원래 갈 수 있는 땅에 도달 못한 부분을 -1로 재처리하는 과정 생략 가능
         }
     }
+    // BFS 시작
     queue<pair<int, int>> Q;
     vis[start.X][start.Y] = 1;
     Q.push(start);
