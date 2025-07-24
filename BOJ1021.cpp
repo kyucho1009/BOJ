@@ -1,5 +1,4 @@
-#include <iostream>
-#include <deque>
+#include <bits/stdc++.h>
 using namespace std;
 
 int cnt;
@@ -7,15 +6,15 @@ int N, M;
 int left_element;
 int right_element;
 int idx;
-deque <int> dq;
+deque<int> dq;
 
-void    func2()
+void func2()
 {
     dq.push_back(dq.front());
     dq.pop_front();
 }
 
-void    func3()
+void func3()
 {
     dq.push_front(dq.back());
     dq.pop_back();
@@ -51,7 +50,7 @@ int main()
                     func2();
                     cnt++;
                 }
-                dq.pop_front();   
+                dq.pop_front();
             }
             else
             {
