@@ -1,55 +1,56 @@
-#include <iostream>
-#include <queue>
+#include <bits/stdc++.h>
 using namespace std;
 
-int main() {
-    int T;
-    queue<int> q;
+int T;
+int num;
+string s;
+queue<int> q;
+
+int main()
+{
     cin >> T;
-    while(T--) {
-        string s;
+    while (T--)
+    {
         cin >> s;
-        
-        if(s == "push") {
-            int num;
+
+        if (s == "push")
+        {
             cin >> num;
             q.push(num);
         }
 
-        else if(s == "pop") {
-            if(q.empty()) {
+        else if (s == "pop")
+        {
+            if (q.empty())
                 cout << "-1\n";
-            }
-            else {
+            else
+            {
                 cout << q.front() << "\n";
                 q.pop();
             }
         }
 
-        else if(s == "size") {
+        else if (s == "size")
             cout << q.size() << "\n";
-        }
 
-        else if(s == "empty") {
+        else if (s == "empty")
             cout << q.empty() << "\n";
-        }
 
-        else if(s == "front") {
-            if(q.empty()) {
+        else if (s == "front")
+        {
+            if (q.empty())
                 cout << "-1\n";
-            }
-            else {
+            else
                 cout << q.front() << "\n";
-            }
         }
 
-        else if(s == "back") {
-            if(q.empty()) {
+        else if (s == "back")
+        {
+            if (q.empty())
                 cout << "-1\n";
-            }
-            else {
+            else
                 cout << q.back() << "\n";
-            }
         }
     }
+    return 0;
 }
