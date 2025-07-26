@@ -1,14 +1,14 @@
-#include <iostream>
-#include <queue>
+#include <bits/stdc++.h>
 using namespace std;
+
+int cnt;
+int num;
+int val;
+int idx;
+int test_case;
 
 int main()
 {
-    int cnt;
-    int num;
-    int val;
-    int idx;
-    int test_case;
 
     cin >> test_case;
     for (int i = 0; i < test_case; i++)
