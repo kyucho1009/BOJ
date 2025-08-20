@@ -70,17 +70,6 @@ int main(void)
         for (int j = 0; j < N; j++)
             cin >> height[i][j];
     }
-    /*
-    int num;
-    num = bfs(3);
-    for (int i = 0; i < N; i++)
-    {
-        for (int j = 0; j < N; j++)
-            cout << board[i][j] << " ";
-        cout << "\n";
-    }
-    cout << num;
-    */
     for (int i = 0; i < 101; i++)
         V.push_back(bfs(i));
     cout << *max_element(V.begin(), V.end());
