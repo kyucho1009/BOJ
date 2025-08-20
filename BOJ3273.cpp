@@ -1,35 +1,36 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
+
+int N;
+int X;
+int cnt;
+int arr[100001];
 
 int main()
 {
-    int num = 0;
-    int cnt = 0;
-    int target = 0;
-
-    cin >> num;
-    int left = 0;
-    int right = num - 1;
-    vector <int> arr(num);
-
-    for (int i = 0; i < num; i++)
-    {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cin >> N;
+    for (int i = 0; i < N; i++)
         cin >> arr[i];
-    }
-    sort(arr.begin(), arr.end());
-    cin >> target;
-    while (left < right)
+    sort(arr, arr + N);
+    cin >> X;
+    int st;
+    int en;
+    st = 0;
+    en = N - 1;
+    while (st < en)
     {
-        if (arr[left] + arr[right]  < target)
-            left++;
-        else if (arr[left] + arr[right] > target)
-            right--;
+        int target;
+        target = arr[st] + arr[en];
+        if (target < X)
+            st++;
+        else if (target > X)
+            en--;
         else
         {
             cnt++;
-            left++;
+            st++;
         }
     }
     cout << cnt;
