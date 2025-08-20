@@ -67,7 +67,6 @@ int main(void)
             {
                 num = bfs(i, j);
                 V.push_back(num + 1);
-                // cout << i << ", " << j << "\n";
             }
         }
     }
@@ -75,14 +74,5 @@ int main(void)
     cout << V.size() << "\n";
     for (auto p = V.begin(); p != V.end(); p++)
         cout << *p << " ";
-
-    /*
-        for (int i = 0; i < N; i++)
-        {
-            for (int j = 0; j < M; j++)
-                cout << vis[i][j];
-            cout << "\n";
-        }
-    */
     return 0;
 }
