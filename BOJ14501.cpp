@@ -22,9 +22,6 @@ int main()
                 DP[i] = max(DP[i], DP[j] + arr[j].second);
         }
     }
-    for (int i = 1; i <= N + 1; i++)
-        cout << DP[i] << " ";
-    cout << "\n";
     cout << *max_element(DP + 1, DP + N + 2);
     return 0;
 }
