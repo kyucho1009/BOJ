@@ -4,31 +4,28 @@ using namespace std;
 int N;
 int num;
 int cnt;
-
-bool isPrimeNumber(int num)
-{
-    if (num == 1)
-        return false;
-    else if (num == 2)
-        return true;
-    for (int i = 2; i < num; i++)
-    {
-        if (num % i == 0)
-            return false;
-    }
-    return true;
-}
+bool isprime;
 
 int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
     cin >> N;
+    cnt = N;
     for (int i = 0; i < N; i++)
     {
         cin >> num;
-        if (isPrimeNumber(num))
-            cnt++;
+        if (num == 1)
+        {
+            cnt--;
+            continue;
+        }
+        for (int j = 2; j * j <= num; j++)
+            if (num % j == 0)
+            {
+                cnt--;
+                break;
+            }
     }
     cout << cnt;
     return 0;
